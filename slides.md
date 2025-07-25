@@ -10,4 +10,4 @@ mdc: true
 ---
 
 1. K8s 基本概念
-2. https://headlamp.dev/ 介紹
+2. Lens 介紹
