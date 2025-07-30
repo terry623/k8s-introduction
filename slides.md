@@ -11,3 +11,4 @@ mdc: true
 
 1. K8s 基本概念
 2. Lens 介紹
+3. MCP
