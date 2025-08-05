@@ -53,7 +53,7 @@ image: /images/deployment.png
 layout: section
 ---
 
-# 整體架構
+# 核心概念
 
 ---
 
@@ -61,7 +61,7 @@ layout: section
 
 *Cluster 就像一座「雲端城市」，由多棟大樓（Node）組成，透過道路（網路）連接，並有市政府（Control Plane）統籌規劃。*
 
-Kubernetes Cluster 是由一組機器（實體或虛擬）組成的集合，這些機器共同協作來執行與管理容器化應用程式。
+Cluster 是由一組機器（實體或虛擬）組成的集合，這些機器共同協作來執行與管理容器化應用程式。
 
 - 一個叢集至少包含一個 Control Plane（控制平面）與多個 Node（工作節點）
 - 控制平面負責整體調度、管理與監控
@@ -72,24 +72,18 @@ Kubernetes Cluster 是由一組機器（實體或虛擬）組成的集合，這�
 
 # Control Plane（控制平面）
 
-*Control Plane 就像「市政府」，負責整個城市的規劃、調度與監管。API Server 是總機中心，Scheduler 是都發局，Controller Manager 是建管處，etcd 是地政局。*
+*Control Plane 就像「市政府」，負責整個城市的規劃、調度與監管。*
 
 Control Plane（控制平面）是 Kubernetes 叢集的核心大腦，負責協調、調度與管理所有 Node 和應用程式。
 
 - 負責資源調度、狀態監控、生命週期管理
 - 接收用戶指令，決定如何分配工作到各個 Node
-- 主要元件包含：
-- kube-apiserver：API 伺服器，所有操作的入口
-- etcd：分散式儲存叢集狀態
-- kube-scheduler：負責 Pod 排程
-- kube-controller-manager：負責各種控制迴圈
-- Control Plane 通常高可用部署，確保叢集穩定運作
 
 ---
 
 # Node
 
-*Node 就像城市裡的一棟大樓，裡面有電力、網路、空調（Runtime、Kubelet、Kube-proxy），讓公司（Pod）進駐。*
+*Node 就像城市裡的一棟大樓，裡面有電力、網路、空調，讓公司（Pod）進駐。*
 
 Node 是 Kubernetes 叢集中的一台伺服器（可為實體機或虛擬機），負責執行 Pod 與容器。
 
@@ -105,12 +99,6 @@ image: /images/structure.png
 ---
 
 ---
-layout: section
----
-
-# 包含了哪些元件？
-
----
 
 # Pod
 
@@ -119,6 +107,7 @@ layout: section
 Pod 是 Kubernetes 中最小的可部署單位，通常包含一個或多個容器。
 
 - 每個 Pod 會被部署在某個 Node 上
+- 每個容器對應一個 Image
 - Pod 內的容器共享網路與儲存空間
 - 適合部署緊密耦合的應用（如主程式+sidecar）
 - Pod 生命週期短暫，通常由 Deployment 等控制器管理
@@ -190,18 +179,6 @@ ConfigMap 與 Secret 用於管理應用程式設定與敏感資訊。
 - 可將 ConfigMap/Secret 掛載為環境變數或檔案
 
 ---
-
-# Namespace
-
-*Namespace 就像城市的「行政區／郵遞區號」，分流不同團隊或環境，避免名字衝突，也方便配額管理。*
-
-Namespace 用於資源隔離與多租戶管理。
-
-- 預設有 default、kube-system、kube-public 等
-- 適合大型團隊、不同專案或環境（dev/stage/prod）隔離
-- 可限制資源配額（ResourceQuota）
-
----
 layout: section
 ---
 
@@ -235,6 +212,12 @@ Lens 是一款開源的 Kubernetes 圖形化管理工具。
 - 一鍵連線多個 K8s 叢集
 - 內建資源圖表、事件追蹤
 - 支援 Marketplace 擴充功能
+
+---
+layout: section
+---
+
+# Demo: How to Deploy AI Hub
 
 ---
 layout: statement
