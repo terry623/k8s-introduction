@@ -250,6 +250,14 @@ Lens 是一款開源的 Kubernetes 圖形化管理工具。
 - 支援 Marketplace 擴充功能
 
 ---
+
+# 什麼時候 Frontend 需要看 K8s？
+
+- Server Side 的 Errors
+- Next.js App Router
+- CPU / Memory 使用量過高
+
+---
 layout: section
 ---
 
